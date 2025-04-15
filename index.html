@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>로그인</title>
+</head>
+<body>
+  <h1>🔑 로그인</h1>
+  <form onsubmit="login(event)">
+    <input type="text" id="username" placeholder="아이디" required><br>
+    <input type="password" id="password" placeholder="비밀번호" required><br>
+    <button type="submit">로그인</button>
+  </form>
+  <p><a href="register.html">회원가입</a></p>
+
+  <script>
+    function login(event) {
+      event.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      const savedPassword = localStorage.getItem("user_" + username);
+
+      if (savedPassword && savedPassword === password) {
+        alert("로그인 성공!");
+        window.location.href = "dashboard.html";
+      } else {
+        alert("아이디 또는 비밀번호가 잘못되었습니다.");
+      }
+    }
+  </script>
+</body>
+</html>
+
+<style>
+  body {
+    background-color: #111;
+    color: #eee;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  form {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 0 20px #8a2be2;
+    backdrop-filter: blur(10px);
+    text-align: center;
+  }
+
+  input {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #8a2be2;
+    border-radius: 8px;
+    background: #222;
+    color: #fff;
+    width: 200px;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: #8a2be2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 0 10px #8a2be2;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    background-color: #a655ff;
+    box-shadow: 0 0 20px #a655ff;
+  }
+
+  a {
+    color: #8a2be2;
+  }
+</style>
