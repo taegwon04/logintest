@@ -16,6 +16,27 @@
       justify-content: center;
       height: 100vh;
       margin: 0;
+      text-align: center;
+      padding: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+      color: #a973ff;
+      animation: fadeIn 1s ease-in-out 0.2s backwards;
     }
 
     form {
@@ -24,23 +45,43 @@
       border-radius: 16px;
       box-shadow: 0 0 20px #8a2be2;
       backdrop-filter: blur(10px);
-      text-align: center;
-      width: 300px;
+      width: 100%;
+      max-width: 320px;
+      box-sizing: border-box;
+      animation: fadeIn 1s ease-in-out 0.4s backwards;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+      color: #ccc;
     }
 
     input {
       padding: 10px;
-      margin: 10px 0;
       border: 1px solid #8a2be2;
       border-radius: 8px;
       background: #222;
       color: #fff;
-      width: 90%;
-      box-sizing: border-box;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      border-color: #c39aff;
+      outline: none;
+      box-shadow: 0 0 8px #a973ff;
+      background-color: #1b1b1b;
     }
 
     button {
-      padding: 10px 20px;
+      padding: 12px;
       background-color: #8a2be2;
       color: white;
       border: none;
@@ -48,36 +89,55 @@
       cursor: pointer;
       font-weight: bold;
       box-shadow: 0 0 10px #8a2be2;
-      transition: 0.3s;
-      width: 90%;
-      box-sizing: border-box;
+      transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+      width: 100%;
     }
 
     button:hover {
       background-color: #a655ff;
       box-shadow: 0 0 20px #a655ff;
+      transform: translateY(-2px);
+    }
+
+    button:active {
+      transform: scale(0.98);
     }
 
     a {
-      color: #8a2be2;
+      color: #a973ff;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+      animation: fadeIn 1s ease-in-out 0.6s backwards;
+    }
+
+    a:hover {
+      color: #c39aff;
     }
 
     @media (max-width: 500px) {
       form {
-        width: 90%;
         padding: 20px;
       }
     }
   </style>
 </head>
 <body>
-  <h1>🔑 로그인</h1>
+  <h1>🔐 로그인</h1>
   <form onsubmit="login(event)">
-    <input type="text" id="username" placeholder="아이디" required><br>
-    <input type="password" id="password" placeholder="비밀번호" required><br>
+    <div class="form-group">
+      <label for="username">아이디</label>
+      <input type="text" id="username" placeholder="아이디" required />
+    </div>
+    <div class="form-group">
+      <label for="password">비밀번호</label>
+      <input type="password" id="password" placeholder="비밀번호" required />
+    </div>
     <button type="submit">로그인</button>
   </form>
-  <p><a href="register.html">회원가입</a></p>
+  <a href="register.html">회원가입</a>
 
   <script>
     function login(event) {
