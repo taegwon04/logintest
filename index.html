@@ -1,30 +1,70 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>로그인</title>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>봉양중학교 모의해킹실습</title>
   <style>
     body {
-      background-color: #111;
-      color: #eee;
+      margin: 0;
       font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #dfffd6, #a8e6cf);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      margin: 0;
+      min-height: 100vh;
       text-align: center;
       padding: 20px;
-      animation: fadeIn 1s ease-in-out;
     }
 
-    @keyframes fadeIn {
+    h1 {
+      color: #388e3c;
+      font-size: 2rem;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 4px rgba(56, 142, 60, 0.4);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    p {
+      color: #4b7d57;
+      font-size: 1rem;
+      margin-bottom: 30px;
+    }
+
+    .clover-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      max-width: 600px;
+    }
+
+    .clover-card {
+      background-color: #ffffffdd;
+      border: 2px solid #81c784;
+      border-radius: 16px;
+      padding: 20px;
+      width: 220px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: fadeInUp 0.6s ease-in-out;
+    }
+
+    @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
       }
       to {
         opacity: 1;
@@ -32,128 +72,81 @@
       }
     }
 
-    h1 {
-      margin-bottom: 20px;
-      font-size: 2rem;
-      color: #a973ff;
-      animation: fadeIn 1s ease-in-out 0.2s backwards;
+    .clover-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
     }
 
-    form {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 0 20px #8a2be2;
-      backdrop-filter: blur(10px);
-      width: 100%;
-      max-width: 320px;
-      box-sizing: border-box;
-      animation: fadeIn 1s ease-in-out 0.4s backwards;
+    .clover-card h3 {
+      margin: 0;
+      color: #2e7d32;
     }
 
-    .form-group {
-      margin-bottom: 15px;
-      text-align: left;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 6px;
+    .clover-card p {
       font-size: 0.9rem;
-      color: #ccc;
-    }
-
-    input {
-      padding: 10px;
-      border: 1px solid #8a2be2;
-      border-radius: 8px;
-      background: #222;
-      color: #fff;
-      width: 100%;
-      transition: all 0.3s ease;
-    }
-
-    input:focus {
-      border-color: #c39aff;
-      outline: none;
-      box-shadow: 0 0 8px #a973ff;
-      background-color: #1b1b1b;
-    }
-
-    button {
-      padding: 12px;
-      background-color: #8a2be2;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 0 0 10px #8a2be2;
-      transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
-      width: 100%;
-    }
-
-    button:hover {
-      background-color: #a655ff;
-      box-shadow: 0 0 20px #a655ff;
-      transform: translateY(-2px);
-    }
-
-    button:active {
-      transform: scale(0.98);
-    }
-
-    a {
-      color: #a973ff;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 16px;
-      font-size: 0.95rem;
-      transition: color 0.3s;
-      animation: fadeIn 1s ease-in-out 0.6s backwards;
-    }
-
-    a:hover {
-      color: #c39aff;
+      color: #555;
     }
 
     @media (max-width: 500px) {
-      form {
-        padding: 20px;
+      .clover-card {
+        width: 90%;
       }
     }
   </style>
 </head>
 <body>
-  <h1>🔐 로그인</h1>
-  <form onsubmit="login(event)">
-    <div class="form-group">
-      <label for="username">아이디</label>
-      <input type="text" id="username" placeholder="아이디" required />
+  <h1>☘️ 봉양중학교: 약한 비밀번호를 뚫어라!</h1>
+  <p>각각의 웹사이트에 회원가입과 로그인을 해보며 보안의 중요성을 알아봅시다</p>
+
+  <div class="clover-container">
+    <div class="clover-card" onclick="location.href='login1.html'">
+      <h3>🍀 쇼핑몰 사이트</h3>
+      <p>이벤트가 많아 보여요!<br>바로 가입해볼까요?</p>
     </div>
-    <div class="form-group">
-      <label for="password">비밀번호</label>
-      <input type="password" id="password" placeholder="비밀번호" required />
+    <div class="clover-card" onclick="location.href='login2.html'">
+      <h3>🏦 은행 사이트</h3>
+      <p>돈을 저축해야해요~<br> 그런데, 내 계좌는 과연 안전할까요?</p>
     </div>
-    <button type="submit">로그인</button>
-  </form>
-  <a href="register.html">회원가입</a>
-
-  <script>
-    function login(event) {
-      event.preventDefault();
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
-
-      const savedPassword = localStorage.getItem("user_" + username);
-
-      if (savedPassword && savedPassword === password) {
-        alert("로그인 성공!");
-        window.location.href = "dashboard.html";
-      } else {
-        alert("아이디 또는 비밀번호가 잘못되었습니다.");
-      }
-    }
-  </script>
+    <div class="clover-card" onclick="location.href='login3.html'">
+      <h3>🎮 게임 플랫폼</h3>
+      <p>게임을 위한 계정을 만들어요~!</p>
+    </div>
+    <div class="clover-card" onclick="location.href='login4.html'">
+      <h3>💌 SNS 계정</h3>
+      <p>친구들과 소통하는 공간,<br> 보안은 괜찮을까요?</p>
+    </div>
+  </div>
 </body>
 </html>
+<script>
+    // 떨어지는 클로버 만들기
+    function createClover() {
+      const clover = document.createElement("div");
+      clover.textContent = "☘️";
+      clover.style.position = "fixed";
+      clover.style.left = Math.random() * window.innerWidth + "px";
+      clover.style.top = "-30px";
+      clover.style.fontSize = "20px";
+      clover.style.opacity = Math.random();
+      clover.style.animation = `fall ${5 + Math.random() * 5}s linear`;
+      document.body.appendChild(clover);
+  
+      setTimeout(() => {
+        clover.remove();
+      }, 10000);
+    }
+  
+    setInterval(createClover, 1000);
+  
+    // 클로버 떨어지는 애니메이션
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes fall {
+        to {
+          transform: translateY(100vh);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+  
