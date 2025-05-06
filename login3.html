@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PixelPlay 로그인</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Nanum Gothic Coding', 'Noto Sans KR', sans-serif;
+      background: linear-gradient(to right, #111, #1a1a1a);
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #000;
+      padding: 20px;
+      color: #39ff14;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+      text-shadow: 0 0 5px #39ff14;
+    }
+
+    nav {
+      background-color: #1e1e1e;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: #39ff14;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .main-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      padding: 40px;
+    }
+
+    .product-card {
+      background-color: #222;
+      border: 1px solid #39ff14;
+      border-radius: 12px;
+      padding: 16px;
+      width: 180px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0, 255, 0, 0.2);
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .product-card h4 {
+      margin: 0;
+      color: #39ff14;
+    }
+
+    .login-box {
+      background-color: #111;
+      padding: 30px;
+      border-radius: 12px;
+      border: 2px solid #39ff14;
+      box-shadow: 0 4px 12px rgba(0, 255, 0, 0.25);
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      text-align: center;
+    }
+
+    .login-box h2 {
+      color: #39ff14;
+      margin-bottom: 10px;
+    }
+
+    .login-box input {
+      padding: 10px;
+      border: 1px solid #39ff14;
+      border-radius: 6px;
+      font-size: 1rem;
+      background: black;
+      color: #39ff14;
+      text-align: center;
+    }
+
+    .show-password {
+      font-size: 0.8rem;
+      color: #39ff14;
+      text-align: left;
+      margin-top: -10px;
+      margin-bottom: 5px;
+    }
+
+    .login-box button {
+      padding: 10px;
+      background-color: #39ff14;
+      color: black;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .login-box button:hover {
+      background-color: #2ecc10;
+    }
+
+    .signup-link {
+      color: #eef3ed;
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+
+    .signup-link a {
+      color: #39ff14;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.9rem;
+    }
+
+    .play-button {
+      display: inline-block;
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #39ff14;
+      color: black;
+      font-weight: bold;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s;
+      cursor: not-allowed;
+    }
+
+    .play-button:hover {
+      background-color: #2ecc10;
+    }
+
+  </style>
+</head>
+<body>
+  <header>🕹️ PixelPlay</header>
+  <nav>
+    <a href="#">홈</a>
+    <a href="login3.html">로그인</a>
+    <a href="signup3.html">회원가입</a>
+  </nav>
+
+  <div class="main-container">
+    <div class="product-card">
+      <img src="gameimage1.png" alt="게임1" />
+      <h4>🐉 던전 어드벤처</h4>
+      <button class="play-button" disabled>🎮 플레이</button>
+    </div>
+    <div class="product-card">
+      <img src="gameimage2.png" alt="게임2" />
+      <h4>🚀 스페이스 슈터</h4>
+      <button class="play-button" disabled>🎮 플레이</button>
+    </div>
+    <div class="login-box">
+      <h2>로그인</h2>
+      <input type="text" id="userid" placeholder="아이디 입력" />
+      <input type="password" id="password" placeholder="비밀번호 입력" />
+      <label class="show-password">
+        <input type="checkbox" onclick="togglePassword()"> 비밀번호 보기
+      </label>
+      <button onclick="login()">로그인</button>
+      <div class="error" id="error-msg"></div>
+      <div class="signup-link">계정이 없으신가요? <a href="signup3.html">회원가입</a></div>
+    </div>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const pw = document.getElementById("password");
+      pw.type = pw.type === "password" ? "text" : "password";
+    }
+
+    function login() {
+      const id = document.getElementById('userid').value;
+      const pw = document.getElementById('password').value;
+      const error = document.getElementById('error-msg');
+
+      const weakPasswords = ['gamer123', '1234', 'pixel'];
+
+      if (weakPasswords.includes(pw)) {
+        window.location.href = 'success3.html';
+      } else {
+        error.textContent = '❌ 로그인 실패: 아이디 또는 비밀번호를 다시 확인해주세요.';
+      }
+    }
+  </script>
+</body>
+</html>

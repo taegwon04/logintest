@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PixelPlay 회원가입</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Nanum Gothic Coding', 'Noto Sans KR', sans-serif;
+      background: linear-gradient(to right, #111, #1a1a1a);
+      color: #39ff14;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #39ff14;
+      margin-bottom: 20px;
+      text-shadow: 0 0 4px #39ff14;
+    }
+
+    .signup-box {
+      background-color: #111;
+      padding: 30px;
+      border-radius: 12px;
+      border: 2px solid #39ff14;
+      box-shadow: 0 4px 12px rgba(0, 255, 0, 0.25);
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+    }
+
+    .signup-box input {
+      padding: 10px;
+      border: 1px solid #39ff14;
+      border-radius: 6px;
+      font-size: 1rem;
+      background: black;
+      color: #39ff14;
+      text-align: center;
+    }
+
+    .show-password {
+      font-size: 0.8rem;
+      color: #39ff14;
+      text-align: left;
+      margin-top: -5px;
+      margin-bottom: 5px;
+    }
+
+    .signup-box button {
+      padding: 10px;
+      background-color: #39ff14;
+      color: black;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 10px;
+    }
+
+    .signup-box button:hover {
+      background-color: #2ecc10;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.9rem;
+    }
+
+    .success {
+      color: #00ff00;
+      font-size: 0.95rem;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🕹️ PixelPlay 회원가입</h1>
+
+  <div class="signup-box">
+    <input type="text" id="newId" placeholder="아이디 입력" />
+
+    <input type="password" id="newPw" placeholder="비밀번호 입력" />
+    <label class="show-password">
+      <input type="checkbox" onclick="togglePassword()"> 비밀번호 보기
+    </label>
+
+    <input type="password" id="confirmPw" placeholder="비밀번호 확인" />
+
+    <button onclick="signup()">회원가입</button>
+    <div class="error" id="signup-error"></div>
+    <div class="success" id="signup-success"></div>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const pw = document.getElementById("newPw");
+      pw.type = pw.type === "password" ? "text" : "password";
+    }
+
+    function signup() {
+      const id = document.getElementById('newId').value.trim();
+      const pw = document.getElementById('newPw').value;
+      const confirm = document.getElementById('confirmPw').value;
+      const error = document.getElementById('signup-error');
+      const success = document.getElementById('signup-success');
+
+      error.textContent = "";
+      success.textContent = "";
+
+      if (id.length < 3) {
+        error.textContent = "아이디는 3자 이상이어야 해요.";
+        return;
+      }
+
+      if (pw.length < 4) {
+        error.textContent = "비밀번호는 4자 이상이어야 해요.";
+        return;
+      }
+
+      if (pw !== confirm) {
+        error.textContent = "비밀번호가 일치하지 않아요.";
+        return;
+      }
+
+      success.textContent = "✅ 회원가입이 완료되었습니다!";
+
+      setTimeout(() => {
+        window.location.href = "login3.html";
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
