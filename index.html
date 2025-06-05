@@ -27,12 +27,8 @@
     }
 
     @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
 
     p {
@@ -62,14 +58,8 @@
     }
 
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .clover-card:hover {
@@ -88,15 +78,20 @@
     }
 
     @media (max-width: 500px) {
-      .clover-card {
-        width: 90%;
-      }
+      .clover-card { width: 90%; }
+    }
+    .wide-card {
+      width: 460px; /* 기존 220px * 2 + 여백 약간 */
+    }
+
+    @media (max-width: 500px) {
+      .wide-card { width: 90%; }
     }
   </style>
 </head>
 <body>
   <h1>☘️ 봉양중학교: 약한 비밀번호를 뚫어라!</h1>
-  <p>각각의 웹사이트에 회원가입과 로그인을 해보며 보안의 중요성을 알아봅시다</p>
+  <p>각각의 웹사이트에 모의 해킹 실습을 해보며 보안의 중요성을 알아봅시다</p>
 
   <div class="clover-container">
     <div class="clover-card" onclick="location.href='login1.html'">
@@ -104,8 +99,8 @@
       <p>이벤트가 많아 보여요!<br>바로 가입해볼까요?</p>
     </div>
     <div class="clover-card" onclick="location.href='login2.html'">
-      <h3>🏦 은행 사이트</h3>
-      <p>돈을 저축해야해요~<br> 그런데, 내 계좌는 과연 안전할까요?</p>
+      <h3>🔍 Bongle 검색 사이트</h3>
+      <p>검색을 편리하게 도와주는<br>학교 전용 검색 엔진이에요!</p>
     </div>
     <div class="clover-card" onclick="location.href='login3.html'">
       <h3>🎮 게임 플랫폼</h3>
@@ -115,10 +110,14 @@
       <h3>💌 SNS 계정</h3>
       <p>친구들과 소통하는 공간,<br> 보안은 괜찮을까요?</p>
     </div>
+    <!-- 새로운 버튼: 비밀번호 강도 테스트 (가로 길이 두 배로!) -->
+    <div class="clover-card wide-card" onclick="location.href='password.html'">
+      <h3>🔒 비밀번호 강도 테스트</h3>
+      <p>직접 만든 비밀번호의 보안 지수를 확인해보세요!</p>
+    </div>
   </div>
-</body>
-</html>
-<script>
+
+  <script>
     // 떨어지는 클로버 만들기
     function createClover() {
       const clover = document.createElement("div");
@@ -130,23 +129,20 @@
       clover.style.opacity = Math.random();
       clover.style.animation = `fall ${5 + Math.random() * 5}s linear`;
       document.body.appendChild(clover);
-  
-      setTimeout(() => {
-        clover.remove();
-      }, 10000);
+
+      setTimeout(() => { clover.remove(); }, 10000);
     }
-  
+
     setInterval(createClover, 1000);
-  
+
     // 클로버 떨어지는 애니메이션
     const style = document.createElement('style');
     style.innerHTML = `
       @keyframes fall {
-        to {
-          transform: translateY(100vh);
-        }
+        to { transform: translateY(100vh); }
       }
     `;
     document.head.appendChild(style);
   </script>
-  
+</body>
+</html>
