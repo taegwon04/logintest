@@ -168,24 +168,33 @@
   </div>
 
   <script>
+    const accounts = [
+      { id: 'selly10', password: 'selly0512!' },
+      { id: 'buriburi11', password: 'password123!' },
+      { id: 'sungjun1234', password: 'greenshop0315!' },
+      { id: 'david', password: '1234567890' },
+      { id: 'emily11', password: 'asdkfajksdjflk!' },
+      { id: 'taegwon', password: '1234' }
+    ];
+
     function login() {
-      const id = document.getElementById('userid').value;
-      const pw = document.getElementById('password').value;
+      const id = document.getElementById('userid').value.trim();
+      const pw = document.getElementById('password').value.trim();
       const error = document.getElementById('error-msg');
 
-      const weakPasswords = ['1234', 'admin', 'password'];
+      const user = accounts.find(acc => acc.id === id && acc.password === pw);
 
-      if (weakPasswords.includes(pw)) {
+      if (user) {
         window.location.href = 'success1.html';
       } else {
         error.textContent = '❌ 로그인 실패: 아이디와 비밀번호를 다시 확인해주세요.';
       }
     }
+
     function togglePassword() {
       const pw = document.getElementById("password");
       pw.type = pw.type === "password" ? "text" : "password";
     }
-
   </script>
 </body>
 </html>
