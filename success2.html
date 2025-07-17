@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bongle 로그인 성공</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #e3f2fd, #bbdefb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .success-box {
+      background-color: #ffffffee;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      animation: fadeInUp 0.8s ease;
+      max-width: 360px;
+      width: 100%;
+    }
+
+    h1 {
+      color: #1a73e8;
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #3c4043;
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    .home-button {
+      padding: 12px 24px;
+      background-color: #1a73e8;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.1s;
+    }
+
+    .home-button:hover {
+      background-color: #0c5bd3;
+    }
+
+    .home-button:active {
+      transform: scale(0.95);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .firework {
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2.5rem;
+      opacity: 1;
+      animation: explode 1s ease-out forwards;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    @keyframes explode {
+      0% {
+        transform: translate(-50%, 0) scale(0.5);
+        opacity: 0;
+      }
+      50% {
+        transform: translate(-50%, -20px) scale(1.5);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -40px) scale(2);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="success-box">
+    <h1>로그인 성공</h1>
+    <p>Bongle에 오신 것을 환영합니다!<br>멋진 하루 보내세요 😄</p>
+    <a href="index.html" class="home-button">홈으로 가기</a>
+  </div>
+
+  <script>
+    // 폭죽 이펙트
+    function createFirework() {
+      const fw = document.createElement("div");
+      fw.className = "firework";
+      fw.textContent = "✨";
+      fw.style.left = Math.random() * 100 + "%";
+      fw.style.top = Math.random() * 50 + "%";
+      fw.style.fontSize = (2 + Math.random() * 2) + "rem";
+      document.body.appendChild(fw);
+      setTimeout(() => fw.remove(), 1000);
+    }
+
+    setInterval(createFirework, 500);
+  </script>
+</body>
+</html>

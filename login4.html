@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bongstagram 로그인</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #fafafa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .logo {
+      font-size: 2.8rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      font-family: 'Roboto', sans-serif;
+      letter-spacing: -1px;
+      background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .login-box {
+      background-color: #fff;
+      border: 1px solid #dbdbdb;
+      border-radius: 8px;
+      width: 320px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .login-box h2 {
+      font-size: 1.2rem;
+      color: #262626;
+      margin-bottom: 20px;
+    }
+
+    .login-box input[type="text"],
+    .login-box input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #dbdbdb;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      background-color: #fafafa;
+    }
+
+    .password-toggle {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: #555;
+      margin-bottom: 15px;
+      width: 100%;
+      white-space: nowrap;
+      text-align: left;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 10px;
+      background: linear-gradient(to right, #f77737, #e1306c);
+      border: none;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .login-box button:hover {
+      opacity: 0.95;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.85rem;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 400px) {
+      .login-box {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">Bongstagram</div>
+
+  <div class="login-box">
+    <h2>친구들의 사진과 동영상을<br />보려면 로그인하세요</h2>
+    <input type="text" id="userid" placeholder="전화번호, 사용자 이름 또는 이메일">
+    <input type="password" id="password" placeholder="비밀번호">
+    <div class="password-toggle">
+      <input type="checkbox" id="showPw" onclick="togglePassword()" />
+      <label for="showPw">비밀번호 보기</label>
+    </div>
+    <button onclick="login()">로그인</button>
+    <div class="error" id="error-msg"></div>
+  </div>
+
+  <script>
+    const accounts = [
+      { id: 'selly10', password: 'selly0512!' },
+      { id: 'buriburi11', password: 'password123!' },
+      { id: 'sungjun1234', password: 'bongstagram0315!' },
+      { id: 'david', password: '1234567890' },
+      { id: 'emily11', password: 'asdksdjflk!' },
+      { id: 'taegwon', password: '1234' }
+    ];
+    function login() {
+      const id = document.getElementById('userid').value;
+      const pw = document.getElementById('password').value;
+      const error = document.getElementById('error-msg');
+        // 계정 확인
+    const user = accounts.find(acc => acc.id === id && acc.password === pw);
+
+    if (id.trim() === "" || pw.trim() === "") {
+        error.textContent = "❌ 모든 필드를 입력하세요.";
+        return;
+    }
+    if (user) {
+        window.location.href = "success4.html";  // 로그인 성공
+    } else {
+        error.textContent = "❌ 로그인 실패: 아이디와 비밀번호를 다시 확인해주세요.";
+    }
+
+
+    }
+
+    function togglePassword() {
+      const pwInput = document.getElementById("password");
+      pwInput.type = pwInput.type === "password" ? "text" : "password";
+    }
+  </script>
+</body>
+</html>
