@@ -198,18 +198,25 @@
       const pw = document.getElementById("password");
       pw.type = pw.type === "password" ? "text" : "password";
     }
-
+    const accounts = [
+      { id: 'selly10', password: 'selly0512!' },
+      { id: 'buriburi11', password: 'password123!' },
+      { id: 'sungjun1234', password: 'pixelplay0315!' },
+      { id: 'david', password: '1234567890' },
+      { id: 'emily11', password: 'wkjhe@adf!' },
+      { id: 'taegwon', password: '1234' }
+    ];
     function login() {
       const id = document.getElementById('userid').value;
       const pw = document.getElementById('password').value;
       const error = document.getElementById('error-msg');
 
-      const weakPasswords = ['gamer123', '1234', 'pixel'];
+      const user = accounts.find(acc => acc.id === id && acc.password === pw);
 
-      if (weakPasswords.includes(pw)) {
+      if (user) {
         window.location.href = 'success3.html';
       } else {
-        error.textContent = '❌ 로그인 실패: 아이디 또는 비밀번호를 다시 확인해주세요.';
+        error.textContent = '❌ 로그인 실패: 아이디와 비밀번호를 다시 확인해주세요.';
       }
     }
   </script>
